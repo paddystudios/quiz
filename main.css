@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jura:wght@300..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --rich-blue-color: #0800ff;
+    --white-color:#ffffff;
+    --black-color: rgb(0, 0, 0);
+    --grey-color: #f1f1f1;
+    --transition: all 300ms ease-in-out;
+
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    color: var(--rich-blue-color);
+    background-color: var(--white-color);
+}
+
+.wrapper{
+    background-color: var(--grey-color);
+    padding: 1.5rem 4rem 3rem 4rem;
+    width: 600px;
+    height: 680px;
+    border-radius: 1.5rem;
+    position:relative;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10% ); 0 1px 3px rgb(0 0 0 / 10%);
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    text-align: center;
+    font-size: 3 rem;
+}
+
+.score-container{
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    border: 5px solid var(--rich-blue-color);
+    background-color: var(--rich-blue-color);
+    color: var(--white-color);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    width: 100px;
+    height: 50px;
+    font-weight: bold;
+}
+
+.quiz-question {
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    font-weight: bold;
+
+}
+
+.quiz-question .category {
+    font-size: 0.9rem;
+    font-weight:lighter;
+    background-color:var(--white-color) ;
+    padding: .2rem .4rem;
+    border-radius: 2rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 1rem 0;
+}
+
+.options li{
+    border-radius: 0.5rem;
+    margin: .7rem 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 10px;
+    cursor: pointer;
+    border: 3px solid var(--white-color);
+    background-color: var(--white-color);
+    color: var(--rich-blue-color-color);
+    box-shadow: 5px 5px var(--rich-blue-color);
+    border: 3px solid var(--rich-blue-color);
+    transition: var(--transition);
+}
+
+.options li:hover{
+    background-color: var(--rich-blue-color);
+    border: var(--rich-blue-color);
+    color: var(--white-color);
+    box-shadow: 5px 5px var(--rich-blue-color);
+    border: 3px solid var(--rich-blue-color);
+}
+
+.options li:active{
+    transform: scale(1.2);
+}
+
+.selected{
+    background-color: var(--rich-blue-color)!important;
+    border: var(--rich-blue-color)!important;
+    color: var(--white-color)!important;
+    box-shadow: 5px 5px var(--rich-blue-color)!important;
+}
+
+.quiz-button-section{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quiz-button-section button{
+    border: none;
+    border-radius: 0.5rem;
+    outline: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white-color);
+    color: var(---rich-blue-color);
+    border: 3px solid var(--rich-blue-color);
+    font-size: 1.2rem;
+    padding: 2%;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 5px 5px var(--rich-blue-color);
+    transition: var(--transition);
+}
+
+.quiz-button-section button:hover{
+    background-color: var(--rich-blue-color);
+    border: var(--rich-blue-color);
+    color: var(--white-color);
+    box-shadow: 5px 5px var(--rich-blue-color);
+    border: 3px solid var(--rich-blue-color);
+}
+
+.quiz-button-section button:active{
+    transform: scale(1.2);
+}
+
+#check-answer{
+}
+
+
+#play-again{
+    display: none;
+}
