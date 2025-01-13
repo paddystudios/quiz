@@ -1,5 +1,5 @@
 const question = document.getElementById('question');
-const options = document.querySelector('.options'); 
+const options = document.querySelector('.options'); // updated selector to match your HTML
 const rightScore = document.getElementById('right-score');
 const totalQuestions = document.getElementById('total-questions');
 const checkBtn = document.getElementById('check-answer');
@@ -10,22 +10,22 @@ let correctAnswer = "",
     correctScore = 0,
     askedCount = 0,
     allQuestions = 10,
-    questions = []; 
+    questions = []; // store fetched questions here
 
-// Event listeners
+// event listeners
 function eventListeners() {
     checkBtn.addEventListener('click', checkAnswers);
     playAgainBtn.addEventListener('click', restartGame);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchQuestions(); 
+    fetchQuestions(); // fetch all questions on page load
     eventListeners();
     totalQuestions.textContent = allQuestions;
     rightScore.textContent = askedCount;
 });
 
-// Fetch 10 questions at once
+// fetch 10 questions at once
 async function fetchQuestions() {
     const APIUrl = 'https://opentdb.com/api.php?amount=10&category=11&type=multiple';
     try {
@@ -33,7 +33,7 @@ async function fetchQuestions() {
         const data = await result.json();
 
         if (data.results && data.results.length > 0) {
-            questions = data.results; // Store questions in the array
+            questions = data.results; // store questions in the array
             loadQuestion();
         } else {
             question.innerHTML = `<p>No questions found. Please try again later.</p>`;
@@ -46,13 +46,13 @@ async function fetchQuestions() {
     }
 }
 
-// Load the next question from the array
+// load the next question from the array
 function loadQuestion() {
     if (questions.length > 0) {
-        const currentQuestion = questions.shift(); /
+        const currentQuestion = questions.shift(); // remove the first question from the array
         showQuestion(currentQuestion);
     } else {
-
+        // if no questions left, display results or fetch more questions
         question.innerHTML = `<p>All questions have been answered. Your score is ${correctScore}.</p>`;
         checkBtn.style.display = 'none';
         playAgainBtn.style.display = 'block';
@@ -65,8 +65,8 @@ function showQuestion(data) {
     correctAnswer = data.correct_answer;
 
     const incorrectAnswers = data.incorrect_answers;
-    const listOfOptions = [...incorrectAnswers]; 
-    listOfOptions.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)), 0, correctAnswer); 
+    const listOfOptions = [...incorrectAnswers]; // copy incorrect answers
+    listOfOptions.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)), 0, correctAnswer); // insert correct answer randomly
 
     question.innerHTML = `${data.question} <br> <span class="category">${data.category}</span>`;
     options.innerHTML = listOfOptions
@@ -76,7 +76,7 @@ function showQuestion(data) {
     selectOption();
 }
 
-// Selection for options
+// selection for options
 function selectOption() {
     options.querySelectorAll('li').forEach((option) => {
         option.addEventListener('click', () => {
@@ -89,7 +89,7 @@ function selectOption() {
     });
 }
 
-// Check the selected answer
+// check the selected anser
 function checkAnswers() {
     checkBtn.disabled = true;
     if (options.querySelector('.selected')) {
@@ -108,18 +108,18 @@ function checkAnswers() {
     }
 }
 
-// Decode HTML entities
+// decode html entities
 function HTMLDecode(textString) {
     let doc = new DOMParser().parseFromString(textString, 'text/html');
     return doc.documentElement.textContent;
 }
 
-// Update question count and handle end of quiz
+// update question count and handle end of quiz
 function checkCount() {
     askedCount++;
     setCount();
     if (askedCount === allQuestions) {
-        quizResult.innerHTML = `<p class="score-results">Your Score is ${correctScore}!</p>`;
+        quizResult.innerHTML = `<p>Your Score is ${correctScore}.</p>`;
         playAgainBtn.style.display = 'block';
         checkBtn.style.display = 'none';
     } else {
@@ -129,20 +129,20 @@ function checkCount() {
     }
 }
 
-// Update score and total questions displayed
+// update score and total questions displayed
 function setCount() {
     totalQuestions.textContent = allQuestions;
     rightScore.textContent = askedCount;
 }
 
-// Restart the game
+// restart the game
 function restartGame() {
     correctScore = 0;
     askedCount = 0;
-    questions = []; // Clear questions array
+    questions = []; // clear questions array
     playAgainBtn.style.display = 'none';
     checkBtn.style.display = 'block';
     checkBtn.disabled = false;
     setCount();
-    fetchQuestions(); // Fetch a new set of questions
+    fetchQuestions(); // fetch a new set of questions
 }
