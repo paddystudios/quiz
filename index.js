@@ -119,7 +119,7 @@ function checkCount() {
     askedCount++;
     setCount();
     if (askedCount === allQuestions) {
-        quizResult.innerHTML = `<p>Your Score is ${correctScore}.</p>`;
+        quizResult.innerHTML = `<p class="score-results">Your Score is ${correctScore}!</p>`;
         playAgainBtn.style.display = 'block';
         checkBtn.style.display = 'none';
     } else {
