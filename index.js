@@ -59,7 +59,7 @@ function loadQuestion() {
     }
 }
 
-// Show the current question and options
+// show the current question and options
 function showQuestion(data) {
     checkBtn.disabled = false;
     correctAnswer = data.correct_answer;
