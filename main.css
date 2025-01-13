@@ -41,6 +41,7 @@ body {
     position:relative;
     box-shadow: 15px 15px var(--rich-blue-color);
     border: 5px solid var(--rich-blue-color);
+    margin: 2%;
 }
 
 .header{
